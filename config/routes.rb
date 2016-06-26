@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :requests
   # Routes for Main controller
   root 'main#index'
   get 'mail' => 'main#mail'
