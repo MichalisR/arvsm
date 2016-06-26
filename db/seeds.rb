@@ -5,10 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Request.destroy_all
 User.destroy_all
 
-User.create(name: "Michalis Rodios", email: 'michalis.rodios@gmail.com',
+User.create(name: "John Doe", email: 'johndoe@mycompany.com',
             position: 'Software Developer', password: 'myPassword',
-            password_confirmation: 'myPassword', manager: 'false')
+            password_confirmation: 'myPassword', is_manager: 'false')
+
+User.create(name: "Jane Doe", email: 'janedoe@mycompany.com',
+            position: 'Manager', password: 'myPassword',
+            password_confirmation: 'myPassword', is_manager: 'false')
+
+User.create(name: "Foo Bar", email: 'foobar@mycompany.com',
+            position: 'Manager', password: 'myPassword',
+            password_confirmation: 'myPassword', is_manager: 'false')
 
 p "Created #{User.count} users"
