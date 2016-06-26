@@ -7,6 +7,8 @@ class CreateRequests < ActiveRecord::Migration
       t.string :absence_type
       t.string :status
       t.string :comment
+      t.integer :no_days
+      t.integer :approver_id
 
       t.timestamps null: false
     end

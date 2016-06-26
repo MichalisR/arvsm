@@ -18,7 +18,7 @@ class RequestsControllerTest < ActionController::TestCase
 
   test "should create request" do
     assert_difference('Request.count') do
-      post :create, request: { absence_type: @request.absence_type, comment: @request.comment, description: @request.description, end_date: @request.end_date, starting_date: @request.starting_date, status: @request.status }
+      post :create, request: { absence_type: @request.absence_type, approver_id: @request.approver_id, comment: @request.comment, description: @request.description, end_date: @request.end_date, no_days: @request.no_days, starting_date: @request.starting_date, status: @request.status }
     end
 
     assert_redirected_to request_path(assigns(:request))
@@ -35,7 +35,7 @@ class RequestsControllerTest < ActionController::TestCase
   end
 
   test "should update request" do
-    patch :update, id: @request, request: { absence_type: @request.absence_type, comment: @request.comment, description: @request.description, end_date: @request.end_date, starting_date: @request.starting_date, status: @request.status }
+    patch :update, id: @request, request: { absence_type: @request.absence_type, approver_id: @request.approver_id, comment: @request.comment, description: @request.description, end_date: @request.end_date, no_days: @request.no_days, starting_date: @request.starting_date, status: @request.status }
     assert_redirected_to request_path(assigns(:request))
   end
 

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
   resources :requests
+  resources :requests
   # Routes for Main controller
   root 'main#index'
   get 'mail' => 'main#mail'
 
   # RESTFul resources for Request
-  resources :requests
 
   # Routes for Sessions controller
   get    'login'   => 'sessions#new'

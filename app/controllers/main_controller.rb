@@ -6,7 +6,7 @@ class MainController < ApplicationController
 
   # View own requests
   def index
-    #@requests = current_user.requests.order(updated_at: :desc)
+    @requests = logged_user.requests.order(updated_at: :desc)
   end
 
   # View incoming requests

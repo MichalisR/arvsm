@@ -30,5 +30,15 @@
   <%= @request.comment %>
 </p>
 
+<p>
+  <strong>No days:</strong>
+  <%= @request.no_days %>
+</p>
+
+<p>
+  <strong>Approver:</strong>
+  <%= @request.approver_id %>
+</p>
+
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>

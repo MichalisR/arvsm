@@ -1,2 +1,77 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<ol class="breadcrumb">
+  <li class="active">Control Panel</li>
+</ol>
+
+<div class="panel panel-default">
+	<div class="row-fluid">
+		<h3>My Requests</h3>
+		<a href="/requests/new" class="btn btn-info" role="button">New Request</a>
+	</div>
+
+	<br class="rwd-break">
+
+	<div class="container-fluid">
+
+		<table class="table table-bordered table-hover">
+	    	<thead>
+	      		<tr>
+	        		<th>Type</th>
+	        		<th>Start Date</th>
+	        		<th>End Date</th>
+	        		<th>Number of Days</th>
+	        		<th>Reporting Manager</th>
+	        		<th>Status</th>
+	      		</tr>
+	    	</thead>
+		    <tbody>
+		    	 <%@requests.each do |request| %>
+      				<tr class= "<%='positive' if request.approved? %> <%='negative' if request.denied? %>">
+        				<td><%= t "request_absense_type.#{request.absense_type}" %> </td>
+				        <td>
+				          <% if request.partial? %>
+				          <strong><%= l request.starting.to_date, format: :long  %></strong>
+				          -
+				          <strong><%= l request.starting, format:  '%H:%M'  %></strong>
+				        <% else %>
+				          <strong><%= l request.starting.to_date, format: :long %></strong>
+				          <% end %>
+
+				        </td>
+				        <td>
+				          <% if request.partial? %>
+				          	<strong><%= l request.ending, format: '%H:%M'  %></strong>
+				          <% else %>
+				          	<strong><%= l request.ending.to_date, format: :long %></strong>
+				          <% end %>
+				        </td>
+				        <td class="collapsing center aligned">
+				          <% unless request.partial? %>
+				          	<a class="ui circular label"><%=  request.days_off %></a>
+				          <% end %>
+				        </td>
+        				<td><%= request.user_assigned.name %></td>
+        				<td >
+          					<strong><%= I18n.t "request_status.#{request.status}" %></strong>
+        				</td>
+				        <td class="collapsing">
+				          <% unless request.requested? %>
+				          	<button class="ui tiny basic button modal-trigger">
+				            	<i class="comment icon"></i>
+				            	Response
+				          	</button>
+				          <% end %>
+				        </td>
+				     </tr>
+				     <% unless request.requested? %>
+				     <tr data-request-response style="display:none">
+				        <td colspan="7">
+				          <h5><%= request.user_assigned.name %>
+				            commented:</h5>
+				          <%= request.response %></td>
+				    </tr>
+				    <% end %>
+      			<% end %>
+		    </tbody>
+	  	</table>
+	  </div>
+</div>
