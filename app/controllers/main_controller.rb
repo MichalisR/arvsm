@@ -10,7 +10,7 @@ class MainController < ApplicationController
   end
 
   # View incoming requests
-  def incoming
+  def employee_requests
     @requests = logged_user.assigned_requests.order(created_at: :desc)
   end
 

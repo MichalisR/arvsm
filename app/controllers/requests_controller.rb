@@ -71,7 +71,7 @@ class RequestsController < ApplicationController
 
     if @request.update_attributes(update_params)
       #Mailer.notify_changed_request_status(@request).deliver_later
-      redirect_to incoming_path
+      redirect_to employee_requests_path
     else
       render 'show'
     end
@@ -101,5 +101,9 @@ class RequestsController < ApplicationController
     def is_assigned
       request = Request.find(params[:id])
       redirect_to(root_url) unless request.approver == logged_user
+    end
+
+    def update_params
+      params.require(:request).permit(:comment)
     end
 end

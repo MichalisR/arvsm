@@ -4,8 +4,7 @@
 
 <div class="panel panel-default">
 	<div class="row-fluid">
-		<h3>My Requests</h3>
-		<a href="/requests/new" class="btn btn-info" role="button">New Request</a>
+		<h3>Employee Requests</h3>
 	</div>
 
 	<br class="rwd-break">
@@ -15,18 +14,19 @@
 		<table class="table table-bordered table-hover">
 	    	<thead>
 	      		<tr>
+	        		<th>Employee</th>
 	        		<th>Type</th>
 	        		<th>Start Date</th>
-	        		<th>End Date</th>
-	        		<th>Number of Days</th>
-	        		<th>Reporting Manager</th>
-	        		<th>Status</th>
-	        		<th>Comment</th>
+			        <th>End Date</th>
+			        <th>Number of Days</th>
+			        <th>Status</th>
+			        <th>Action</th>
 	      		</tr>
 	    	</thead>
 		    <tbody>
 		    	 <%@requests.each do |request| %>
       				<tr>
+      					<td><%= request.user.name %></td>
         				<td><%= t "request_absense_type.#{request.absense_type}" %> </td>
 				        <td>
 				          <% if request.partial? %>
@@ -47,15 +47,21 @@
 				        </td>
 				        <td>
 				          <% unless request.partial? %>
-				          	<a><%=  request.no_days %></a>
+				          	<%=  request.no_days %>
 				          <% end %>
 				        </td>
-        				<td><%= request.approver.name %></td>
         				<td>
           					<%= t "request_status.#{request.status}" %>
         				</td>
-        				 <td>
-				          <%= request.comment %></td>
+        				<td>
+				          <div style="display:none"><%= request.comment %></div>
+				          <% if request.requested? %>
+				          <a href="<%= request_path(request) %>" class="ui tiny basic  button modal-trigger">
+				            <i class="unhide icon"></i>
+				            Decide
+				          </a>
+				          <% end %>
+				        </td>
 				     </tr>
 				     
       			<% end %>

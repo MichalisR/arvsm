@@ -16,10 +16,8 @@
 	      				<a class="navbar-brand" href="#">AVRSM</a>
 	    			</div>
 	    			<ul class="nav navbar-nav">
-	      				<li class="active"> <%= link_to "My Requests", root_path,
-                      class:'ui red item' %></li>
-	      				<li> <%= link_to "Incoming Requets", #incoming_path,
-                      class:'ui red item' if logged_user.is_manager? %></li>
+	      				<li> <%= link_to "My Requests", root_path %></li>
+	      				<li> <%= link_to "Employee Requests", employee_requests_path if logged_user.is_manager? %></li>
 	    			</ul>
 	    			<div class="nav navbar-nav navbar-right">
 	    				<ul class="nav navbar-nav">

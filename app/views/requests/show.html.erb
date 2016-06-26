@@ -1,44 +1,51 @@
+<ol class="breadcrumb">
+  <li><%= link_to 'Control Panel', employee_requests_path %></li>
+  <li class="active">Approve Request</li>
+</ol>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @request.description %>
-</p>
+<div class="form-group">
+  <label>Employee Name:  </label><br> <%= @request.user.name %><br>
 
-<p>
-  <strong>Starting date:</strong>
-  <%= @request.starting_date %>
-</p>
+  <label>Occupation:</label><br> <%= @request.user.position %><br>
 
-<p>
-  <strong>End date:</strong>
-  <%= @request.end_date %>
-</p>
+  <label>Absense Type:</label><br> <%= @request.absense_type %><br>
+</div>
 
-<p>
-  <strong>Absence type:</strong>
-  <%= @request.absense_type %>
-</p>
+<div class="form-group">
+  <% if @request.partial? %>
+    <label>Date</label>
+    <%= l @request.starting_date.to_date, format: :long  %>  <div class="field">
+    <label>Starting Hour</label>
+    <%= l @request.starting_date, format:  '%H:%M'  %>
+    <label>End Hour</label>
+    <%= l @request.end_date, format:  '%H:%M'  %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @request.status %>
-</p>
+  <% else %>
+    <label>Starting Date: </label>
+    <%= l @request.starting_date.to_date, format: :long  %>
+    <label>End Date: </label>
+    <%= l @request.end_date.to_date, format: :long  %>
+    <label>Working Days: </label>
+    <%= @request.no_days %>
 
-<p>
-  <strong>Comment:</strong>
-  <%= @request.comment %>
-</p>
+  <% end %>
 
-<p>
-  <strong>No days:</strong>
-  <%= @request.no_days %>
-</p>
+</div>
 
-<p>
-  <strong>Approver:</strong>
-  <%= @request.approver_id %>
-</p>
+<div class="form-group">
+  <label>Description:  </label><br> <%= @request.description %>
+</div>
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+<%= form_for(@request) do |f| %>
+  <div class="form-group">
+    <label>Leave comment: </label><br>
+    <%= f.text_area :comment, rows:5, cols:80 %>
+  </div>
+
+  <div class="span2 col-md-2 ">
+    <p><%= f.submit 'Approve' , class: 'btn-success btn-block', name: 'approved' %></p>
+    <p><%= f.submit 'Deny' , class: 'btn-danger btn-block',name:'denied' %></p>
+  </div>
+<% end %>
