@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration
       t.string :description
       t.datetime :starting_date
       t.datetime :end_date
-      t.string :absence_type
+      t.string :absense_type
       t.string :status
       t.string :comment
       t.integer :no_days

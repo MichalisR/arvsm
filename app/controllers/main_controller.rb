@@ -11,7 +11,7 @@ class MainController < ApplicationController
 
   # View incoming requests
   def incoming
-    #@requests = current_user.assigned_requests.order(created_at: :desc)
+    @requests = logged_user.assigned_requests.order(created_at: :desc)
   end
 
   def is_manager

@@ -30,6 +30,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
+# For dare validation
+gem 'validates_timeliness'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
