@@ -37,6 +37,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-datetimepicker'
 end
 
+# For opening mail
+gem "letter_opener"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
