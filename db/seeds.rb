@@ -18,6 +18,6 @@ User.create(name: "Jane Doe", email: 'janedoe@mycompany.com',
 
 User.create(name: "Foo Bar", email: 'foobar@mycompany.com',
             position: 'Manager', password: 'myPassword',
-            password_confirmation: 'myPassword', is_manager: 'false')
+            password_confirmation: 'myPassword', is_manager: 'true')
 
 p "Created #{User.count} users"
