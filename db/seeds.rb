@@ -10,14 +10,14 @@ User.destroy_all
 
 User.create(name: "John Doe", email: 'johndoe@mycompany.com',
             position: 'Software Developer', password: 'myPassword',
-            password_confirmation: 'myPassword', is_manager: 'false')
+            password_confirmation: 'myPassword', manager: 'false')
 
 User.create(name: "Jane Doe", email: 'janedoe@mycompany.com',
             position: 'Manager', password: 'myPassword',
-            password_confirmation: 'myPassword', is_manager: 'false')
+            password_confirmation: 'myPassword', manager: 'false')
 
 User.create(name: "Foo Bar", email: 'foobar@mycompany.com',
             position: 'Manager', password: 'myPassword',
-            password_confirmation: 'myPassword', is_manager: 'true')
+            password_confirmation: 'myPassword', manager: 'true')
 
 p "Created #{User.count} users"
