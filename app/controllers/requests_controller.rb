@@ -51,7 +51,7 @@ class RequestsController < ApplicationController
     if @request.save
 
       Mailer.mail_request(@request).deliver_later
-      flash[:success] = 'Your absense request has been submitted successfully!'
+      flash[:success] = 'Your absence request has been submitted successfully!'
       redirect_to root_path
     else
       render :new

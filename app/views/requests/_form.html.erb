@@ -8,11 +8,11 @@
 
     $('input:radio').change(function () {
       if ($(this).val() == 'partial') {
-        $(".full-absense").hide();
-        $(".partial-absense").show();
+        $(".full-absence").hide();
+        $(".partial-absence").show();
       } else {
-        $(".full-absense").show();
-        $(".partial-absense").hide();
+        $(".full-absence").show();
+        $(".partial-absence").hide();
       }
     });
 
@@ -34,16 +34,16 @@
   <% end %>
 
   <div class="form-group">
-      <label>Absense type: </label>
-      <%= f.radio_button :absense_type, 'full'  %>
+      <label>absence type: </label>
+      <%= f.radio_button :absence_type, 'full'  %>
       <label>Full</label>
-      <%= f.radio_button :absense_type, 'sickness'  %>
+      <%= f.radio_button :absence_type, 'sickness'  %>
       <label>Sickness</label>
-      <%= f.radio_button :absense_type, 'partial'  %>
+      <%= f.radio_button :absence_type, 'partial'  %>
       <label>Partial</label>
   </div>
 
-  <div class="form-group full-absense">
+  <div class="form-group full-absence">
       <label>Start Date: </label><br>
       <%= f.text_field :starting_date %><br>
       <label>End Date:</label><br>
@@ -52,7 +52,7 @@
       <%= f.text_field :no_days %>
   </div>
 
-  <div class="form-group partial-absense">
+  <div class="form-group partial-absence">
       <label>Date: </label><br>
       <%= f.text_field :partial_starting %><br>
       <label>Starting Hour:</label><br>
