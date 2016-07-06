@@ -1,12 +1,12 @@
 class Request < ActiveRecord::Base
-	# Status and Absense Type Enums
+	# Status and absence Type Enums
   	enum status:       { requested: 'status_requested',
                        approved: 'status_approved',
                        denied: 'status_denied' }
 
-  	enum absense_type: { full: 'absense_full',
-                       sickness: 'absense_sickness',
-                       partial: 'absense_partial' }
+  	enum absence_type: { full: 'absence_full',
+                       sickness: 'absence_sickness',
+                       partial: 'absence_partial' }
 
   attr_accessor :partial_starting, :starting_time, :end_time
 
@@ -14,7 +14,7 @@ class Request < ActiveRecord::Base
   belongs_to :approver, class_name: 'User'
 
   validates :user_id, :approver,
-            :absense_type,
+            :absence_type,
             presence: true
 
   with_options unless: :partial? do |np|
@@ -38,6 +38,6 @@ class Request < ActiveRecord::Base
   after_initialize :set_default_values
 
   def set_default_values
-    self.absense_type ||= Request.absense_types[:full]
+    self.absence_type ||= Request.absence_types[:full]
   end
 end
