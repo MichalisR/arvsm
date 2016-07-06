@@ -57,3 +57,7 @@ group :development, :test do
   gem 'spring'
 end
 
+# For heroku integration
+gem 'rails_12factor', group: :production
+
+ruby "2.2.3"
