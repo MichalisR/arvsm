@@ -64,7 +64,7 @@
  <div class="form-group">
       <label>Assign to: </label><br>
       <%= f.select(:approver_id,
-                   User.where(is_manager:true)
+                   User.where(manager:true)
                        .where.not(id:logged_user.id)
                        .collect {|p| [ p.name, p.id ] },
                    {},{} )%>
